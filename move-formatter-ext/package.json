@@ -1,0 +1,45 @@
+{
+    "name": "move-formatter",
+    "displayName": "move-formatter",
+    "description": "A formatter for the SUI move language.",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.88.0"
+    },
+    "keywords": [
+        "move",
+        "sui",
+        "formatter"
+    ],
+    "categories": [
+        "Formatters"
+    ],
+    "activationEvents": [
+        "onLanguage:move"
+    ],
+    "main": "./dist/extension.js",
+    "scripts": {
+        "vscode:prepublish": "npm run esbuild-base -- --minify",
+        "install:local": "code --install-extension dist/move-formatter.vsix",
+        "esbuild-base": "esbuild ./src/extension.ts --bundle --loader:.node=file --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
+        "pretest": "yarn run compile && yarn run lint",
+        "lint": "eslint src --ext ts",
+        "test": "vscode-test",
+        "package": "vsce package -o dist/move-formatter.vsix"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.6",
+        "@types/node": "18.x",
+        "@types/vscode": "^1.88.0",
+        "@typescript-eslint/eslint-plugin": "^7.4.0",
+        "@typescript-eslint/parser": "^7.4.0",
+        "@vscode/test-cli": "^0.0.8",
+        "@vscode/test-electron": "^2.3.9",
+        "eslint": "^8.57.0",
+        "typescript": "^5.3.3"
+    },
+    "dependencies": {
+        "esbuild": "^0.20.2",
+        "vsce": "^2.15.0"
+    }
+}
