@@ -1,10 +1,11 @@
 {
-    "name": "move-formatter",
-    "displayName": "move-formatter",
-    "description": "A formatter for the SUI move language.",
+    "name": "sui-move-formatter",
+    "displayName": "SUI Move Formatter",
+    "description": "A formatter for the SUI move language with Development features.",
     "version": "0.0.1",
     "engines": {
-        "vscode": "^1.88.0"
+        "vscode": "^1.88.0",
+        "node": ">= 10"
     },
     "keywords": [
         "move",
@@ -19,9 +20,10 @@
     ],
     "main": "./dist/extension.js",
     "scripts": {
+        "build": "napi build --platform --release dist",
         "vscode:prepublish": "npm run esbuild-base -- --minify",
-        "package": "vsce package -o dist/move-formatter.vsix",
-        "install:local": "code --install-extension dist/move-formatter.vsix",
+        "package": "vsce package -o dist/sui-move-formatter.vsix",
+        "install:local": "code --install-extension dist/sui-move-formatter.vsix",
         "esbuild-base": "esbuild ./src/extension.ts --bundle --loader:.node=file --outfile=dist/extension.js --external:vscode --format=cjs --platform=node",
         "pretest": "yarn run compile && yarn run lint",
         "lint": "eslint src --ext ts",
@@ -36,11 +38,23 @@
         "@vscode/test-cli": "^0.0.8",
         "@vscode/test-electron": "^2.3.9",
         "eslint": "^8.57.0",
-        "typescript": "^5.3.3"
+        "typescript": "^5.3.3",
+        "@napi-rs/cli": "^2.18.2",
+        "ava": "^6.0.1"
     },
     "dependencies": {
         "esbuild": "^0.20.2",
-        "move-formatter-rs": "file:../move-formatter-rs",
         "vsce": "^2.15.0"
+    },
+    "ava": {
+        "timeout": "3m"
+    },
+    "napi": {
+        "name": "sui-move-formatter-rs"
+    },
+    "license": "Apache-2.0",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/DaughterOfMars/move-formatter.git"
     }
 }

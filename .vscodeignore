@@ -11,3 +11,10 @@ vsc-extension-quickstart.md
 **/.vscode-test.*
 out/
 node_modules
+target
+Cargo.*
+*.rs
+*.md
+LICENCE.txt
+npm
+*.toml
