@@ -15,3 +15,15 @@ This formatter exists because Mystenlabs has not yet created a formatter for Mov
 - [x] Enum definitions
 - [x] Match statements
 - [ ] Clever Assertions
+
+# Local installation for Visual Studio Code
+
+`yarn`
+
+Compile the binary: `yarn build`
+
+Build the vsce (Visual Studio Code Extensions) package: `yarn package`
+
+Debug run the extension: `F5` output is visible in `OUTPUT` (next to the terminal) when selecting `Log (Extension Host)` at the top right
+
+Install the extension: `yarn install:local`
