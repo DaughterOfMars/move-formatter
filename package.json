@@ -42,6 +42,18 @@
         "@napi-rs/cli": "^2.18.2",
         "ava": "^6.0.1"
     },
+    "languages": [
+        {
+            "id": "move",
+            "aliases": [
+                "Move",
+                "move"
+            ],
+            "extensions": [
+                ".move"
+            ]
+        }
+    ],
     "dependencies": {
         "esbuild": "^0.20.2",
         "vsce": "^2.15.0"
