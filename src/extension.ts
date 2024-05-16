@@ -6,9 +6,12 @@ import * as move_formatter from "../dist/index.js";
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(_context: vscode.ExtensionContext) {
+    let sysout = vscode.window.createOutputChannel("SUI Move Formatter");
     vscode.languages.registerDocumentFormattingEditProvider("move", {
         provideDocumentFormattingEdits(document: vscode.TextDocument): vscode.TextEdit[] {
-            const newText = move_formatter.formatString(document.getText());
+            const configPath = move_formatter.getConfigPath(document.uri.fsPath);
+            sysout.appendLine(`config path for ${document.fileName}: ${configPath}`);
+            const newText = move_formatter.formatString(document.getText(), configPath);
             return [
                 new vscode.TextEdit(
                     new vscode.Range(
